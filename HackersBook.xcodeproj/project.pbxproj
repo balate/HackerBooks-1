@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		073685941C0EE4EA00889D27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073685931C0EE4EA00889D27 /* AppDelegate.swift */; };
-		073685961C0EE4EA00889D27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073685951C0EE4EA00889D27 /* ViewController.swift */; };
 		073685991C0EE4EA00889D27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 073685971C0EE4EA00889D27 /* Main.storyboard */; };
 		0736859B1C0EE4EA00889D27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0736859A1C0EE4EA00889D27 /* Assets.xcassets */; };
 		0736859E1C0EE4EA00889D27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0736859C1C0EE4EA00889D27 /* LaunchScreen.storyboard */; };
+		073685A91C0F130100889D27 /* AGTBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073685A81C0F130100889D27 /* AGTBook.swift */; };
+		073685AC1C0F15CF00889D27 /* AGTLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073685AB1C0F15CF00889D27 /* AGTLibrary.swift */; };
+		07EAAEE11C0F60450046533A /* AGTHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EAAEE01C0F60450046533A /* AGTHelper.swift */; };
+		07EAAEE41C0FAD0B0046533A /* AGTLibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EAAEE31C0FAD0B0046533A /* AGTLibraryTableViewController.swift */; };
+		07EAAEE71C0FAF320046533A /* AGTLibraryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EAAEE61C0FAF320046533A /* AGTLibraryProtocol.swift */; };
+		07EAAEE91C0FB7470046533A /* AGTBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EAAEE81C0FB7470046533A /* AGTBookTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		073685901C0EE4EA00889D27 /* HackersBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackersBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		073685931C0EE4EA00889D27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		073685951C0EE4EA00889D27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		073685981C0EE4EA00889D27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0736859A1C0EE4EA00889D27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0736859D1C0EE4EA00889D27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0736859F1C0EE4EA00889D27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		073685A81C0F130100889D27 /* AGTBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGTBook.swift; path = Models/AGTBook.swift; sourceTree = "<group>"; };
+		073685AB1C0F15CF00889D27 /* AGTLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGTLibrary.swift; sourceTree = "<group>"; };
+		07EAAEE01C0F60450046533A /* AGTHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGTHelper.swift; path = Helpers/AGTHelper.swift; sourceTree = "<group>"; };
+		07EAAEE31C0FAD0B0046533A /* AGTLibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGTLibraryTableViewController.swift; path = ViewControllers/AGTLibraryTableViewController.swift; sourceTree = "<group>"; };
+		07EAAEE61C0FAF320046533A /* AGTLibraryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGTLibraryProtocol.swift; path = API/AGTLibraryProtocol.swift; sourceTree = "<group>"; };
+		07EAAEE81C0FB7470046533A /* AGTBookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AGTBookTableViewCell.swift; path = Views/AGTBookTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,67 @@
 		073685921C0EE4EA00889D27 /* HackersBook */ = {
 			isa = PBXGroup;
 			children = (
+				07EAAEDF1C0F60270046533A /* Helpers */,
+				073685AA1C0F15B300889D27 /* API */,
+				073685A51C0F109900889D27 /* Models */,
+				07EAAEE21C0FACAE0046533A /* App */,
+				07EAAEE51C0FAD100046533A /* ViewControllers */,
+				07EAAEEA1C0FB74F0046533A /* Views */,
+			);
+			path = HackersBook;
+			sourceTree = "<group>";
+		};
+		073685A51C0F109900889D27 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				073685A81C0F130100889D27 /* AGTBook.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		073685AA1C0F15B300889D27 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				073685AB1C0F15CF00889D27 /* AGTLibrary.swift */,
+				07EAAEE61C0FAF320046533A /* AGTLibraryProtocol.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		07EAAEDF1C0F60270046533A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				07EAAEE01C0F60450046533A /* AGTHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		07EAAEE21C0FACAE0046533A /* App */ = {
+			isa = PBXGroup;
+			children = (
 				073685931C0EE4EA00889D27 /* AppDelegate.swift */,
-				073685951C0EE4EA00889D27 /* ViewController.swift */,
 				073685971C0EE4EA00889D27 /* Main.storyboard */,
 				0736859A1C0EE4EA00889D27 /* Assets.xcassets */,
 				0736859C1C0EE4EA00889D27 /* LaunchScreen.storyboard */,
 				0736859F1C0EE4EA00889D27 /* Info.plist */,
 			);
-			path = HackersBook;
+			name = App;
+			sourceTree = "<group>";
+		};
+		07EAAEE51C0FAD100046533A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				07EAAEE31C0FAD0B0046533A /* AGTLibraryTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		07EAAEEA1C0FB74F0046533A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				07EAAEE81C0FB7470046533A /* AGTBookTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +198,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073685961C0EE4EA00889D27 /* ViewController.swift in Sources */,
+				07EAAEE71C0FAF320046533A /* AGTLibraryProtocol.swift in Sources */,
+				07EAAEE91C0FB7470046533A /* AGTBookTableViewCell.swift in Sources */,
+				073685AC1C0F15CF00889D27 /* AGTLibrary.swift in Sources */,
+				07EAAEE11C0F60450046533A /* AGTHelper.swift in Sources */,
 				073685941C0EE4EA00889D27 /* AppDelegate.swift in Sources */,
+				073685A91C0F130100889D27 /* AGTBook.swift in Sources */,
+				07EAAEE41C0FAD0B0046533A /* AGTLibraryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +354,7 @@
 				073685A41C0EE4EA00889D27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
