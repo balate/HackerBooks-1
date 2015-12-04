@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cME-5Z-AjY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="stm-B7-nzp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQy-nq-T0U" id="UFc-6K-IpN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-IZ-x5i">
@@ -70,6 +70,7 @@
                                     <outlet property="imageBook" destination="AH1-IZ-x5i" id="EaC-6d-zY3"/>
                                     <outlet property="labelAuthors" destination="mDO-Zo-16y" id="91y-iU-DnR"/>
                                     <outlet property="labelTitle" destination="CKq-gf-SRP" id="6H2-aw-9mT"/>
+                                    <segue destination="kIu-eV-ro1" kind="showDetail" id="Ka0-qb-E2E"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -85,7 +86,27 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4p-Dg-mog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="259"/>
+            <point key="canvasLocation" x="-5150" y="69"/>
+        </scene>
+        <!--Book Details-->
+        <scene sceneID="cDY-YY-QQi">
+            <objects>
+                <viewController id="fKy-PR-9h8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dxf-SA-bLl"/>
+                        <viewControllerLayoutGuide type="bottom" id="TeQ-JF-oPd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j3J-CG-FdP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Book Details" id="AIO-uw-VO7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZd-yw-X7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5150" y="810"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nbO-mO-La5">
@@ -104,7 +125,42 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zzv-YH-FCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="186" y="259"/>
+            <point key="canvasLocation" x="-5988" y="79"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="GBn-8C-pfT">
+            <objects>
+                <splitViewController id="stm-B7-nzp" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="cME-5Z-AjY" kind="relationship" relationship="masterViewController" id="bw0-p0-9d3"/>
+                        <segue destination="kIu-eV-ro1" kind="relationship" relationship="detailViewController" id="Qey-kT-ip9"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CYs-i1-J96" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6971" y="468"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bcI-jf-H0J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kIu-eV-ro1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FjA-IB-WRc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fKy-PR-9h8" kind="relationship" relationship="rootViewController" id="Sma-a6-A50"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8m-Jm-LZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5993" y="810"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ka0-qb-E2E"/>
+    </inferredMetricsTieBreakers>
 </document>

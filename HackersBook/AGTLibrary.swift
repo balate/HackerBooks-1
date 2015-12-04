@@ -12,14 +12,12 @@ import UIKit
 
 class AGTLibrary {
     var books: [AGTBook]
-    var tags: [NSString]
-    var imagesDictionary = Dictionary<String, String>()
+    var tags: [String]
     var delegate: AGTLibraryProtocol?
     
     
     static let URL_SERVICE      = "https://t.co/K9ziV0z3SJ";
     static let LOCAL_DATA_KEY   = "booksData";
-    static let LOCAL_IMAGES_KEY = "booksImages";
 
     var booksCount:Int {
         get {
@@ -28,17 +26,15 @@ class AGTLibrary {
         }
     }
     
-    func jsonToBooks(data: NSData) -> [AGTBook]? {
+    func getJSON(data: NSData) {
         do {
             let serializer = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSArray
             
-            var books = [AGTBook]()
             
             for element in serializer  {
                 
                 let authors = (element["authors"] as! String).componentsSeparatedByString(",")
                 let tags = (element["tags"] as! String).componentsSeparatedByString(",")
-                
                 
                 let book = AGTBook(title: element["title"] as! String,
                     authors: authors,
@@ -46,30 +42,44 @@ class AGTLibrary {
                     urlImage: NSURL(string: element["image_url"] as! String)!,
                     urlPDF:  NSURL(string: element["pdf_url"] as! String)!)
             
-                
-                books.append(book)
+                self.tags.appendContentsOf(tags)
+                self.books.append(book)
                 
             }
-            return books;
-            
+            self.tags = self.removeDuplicateTags()
         } catch let error as NSError {
             NSLog("%@", error)
         }
-        return nil;
     }
     
     
     init() {
         self.books = [AGTBook]()
-        self.tags = [NSString]()
+        self.tags = [String]()
+    }
+    
+    
+    func removeDuplicateTags() -> [String] {
+        var newTags = [String]()
+        
+        for tag in self.tags {
+            let cleanTag = tag.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            if !newTags.contains(cleanTag) {
+                newTags.append(cleanTag)
+            }
+        }
+        return newTags
     }
     
     
     func loadData() -> Void {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let data = userDefaults.dataForKey(AGTLibrary.LOCAL_DATA_KEY) {
-            self.books.appendContentsOf(self.jsonToBooks(data)!)
-            self.imagesDictionary = userDefaults.objectForKey(AGTLibrary.LOCAL_IMAGES_KEY) as! Dictionary
+            self.getJSON(data)
+            self.tags.sortInPlace()
+            self.books.sortInPlace({ (a, b) -> Bool in
+                return a.title.compare(b.title) == NSComparisonResult.OrderedAscending
+            })
             self.delegate?.didLibraryFinishedLoad(self.books)
         }
         else {
@@ -80,7 +90,14 @@ class AGTLibrary {
                     
                     let data : NSData = NSData(contentsOfURL: url)!
                     
-                    self.books.appendContentsOf(self.jsonToBooks(data)!)
+                    self.getJSON(data)
+                    self.books.sortInPlace({ (a, b) -> Bool in
+                        return a.title.compare(b.title) == NSComparisonResult.OrderedAscending
+                    })
+                    self.tags.sortInPlace()
+                    
+
+
                     
                     // Save all images locally
                     for book in self.books {
@@ -88,14 +105,11 @@ class AGTLibrary {
                         let imageData : NSData = NSData(contentsOfURL: book.urlImage)!
                         let imageFileName = book.urlImage.path?.componentsSeparatedByString("/")
                         if let imagePath = imageFileName?.last {
-                            let localImagePath = AGTHelper.sharedHelper.saveImage(imagePath, data: imageData)
-                            let imageKey = imagePath.componentsSeparatedByString(".")
-                            self.imagesDictionary[imageKey.first!] = localImagePath
+                            AGTHelper.sharedHelper.saveImage(imagePath, data: imageData)
                         }
                     }
                     // Save data
                     dispatch_async(dispatch_get_main_queue(), {
-                        userDefaults.setObject(self.imagesDictionary, forKey: AGTLibrary.LOCAL_IMAGES_KEY)
                         userDefaults.setValue(data, forKey: AGTLibrary.LOCAL_DATA_KEY)
                         userDefaults.synchronize()
                         self.delegate?.didLibraryFinishedLoad(self.books)
@@ -119,7 +133,7 @@ class AGTLibrary {
     func booksForTag (tag:String) -> [AGTBook]? {
         var booksFoundForTag : [AGTBook] = [AGTBook]()
         for book in self.books {
-            if (book.tags.contains(tag)) {
+            if (book.tags.contains(tag)  || book.tags.contains(" " + tag)) {
                 booksFoundForTag.append(book)
             }
         }

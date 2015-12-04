@@ -14,13 +14,11 @@ class AGTHelper: NSObject {
     
     
         
-    func saveImage(fileName: String, data: NSData) ->  String {
-        
+    func saveImage(fileName: String, data: NSData) ->  Bool {
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let documentDirectory = paths[0]
         let path = documentDirectory.stringByAppendingString("/" + fileName)
-        let success = data.writeToFile(path, atomically: false)
-        return path;
+        return data.writeToFile(path, atomically: true)
     }
     
     
