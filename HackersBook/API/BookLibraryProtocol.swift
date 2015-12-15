@@ -8,6 +8,10 @@
 
 import UIKit
 
-protocol AGTLibraryProtocol {
-    func didLibraryFinishedLoad(books: [AGTBook])
+protocol BookLibraryProtocol {
+    func didLibraryFinishedLoad(books: [Book])
+}
+
+protocol BookProtocol {
+    func didBookChangedStatus(book: Book)
 }

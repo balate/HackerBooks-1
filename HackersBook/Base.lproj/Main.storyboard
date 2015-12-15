@@ -9,27 +9,21 @@
         <!--Hacker Books-->
         <scene sceneID="FFU-Cm-eEe">
             <objects>
-                <tableViewController id="w7Q-CF-ONY" customClass="AGTLibraryTableViewController" customModule="HackersBook" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="w7Q-CF-ONY" customClass="LibraryTableViewController" customModule="HackersBook" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" id="nDD-cQ-PgO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="n2D-TT-juq">
-                            <rect key="frame" x="0.0" y="172" width="600" height="37"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <color key="color" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
-                        </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="80" id="bQy-nq-T0U" customClass="AGTBookTableViewCell" customModule="HackersBook" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="80" id="bQy-nq-T0U" customClass="BookTableViewCell" customModule="HackersBook" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQy-nq-T0U" id="UFc-6K-IpN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-IZ-x5i">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-IZ-x5i" customClass="ImageViewAsync" customModule="HackersBook">
                                             <rect key="frame" x="10" y="10" width="60" height="60"/>
                                             <animations/>
                                             <constraints>
@@ -41,14 +35,14 @@
                                             <rect key="frame" x="85" y="10" width="490" height="22"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDO-Zo-16y">
                                             <rect key="frame" x="85" y="47" width="497" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -70,7 +64,7 @@
                                     <outlet property="imageBook" destination="AH1-IZ-x5i" id="EaC-6d-zY3"/>
                                     <outlet property="labelAuthors" destination="mDO-Zo-16y" id="91y-iU-DnR"/>
                                     <outlet property="labelTitle" destination="CKq-gf-SRP" id="6H2-aw-9mT"/>
-                                    <segue destination="kIu-eV-ro1" kind="showDetail" id="Ka0-qb-E2E"/>
+                                    <segue destination="kIu-eV-ro1" kind="showDetail" identifier="showDetail" id="Ka0-qb-E2E"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -80,9 +74,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Hacker Books" id="EGX-H5-9wL"/>
-                    <connections>
-                        <outlet property="activityIndicator" destination="n2D-TT-juq" id="oGu-pZ-0ki"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g4p-Dg-mog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,7 +82,7 @@
         <!--Book Details-->
         <scene sceneID="cDY-YY-QQi">
             <objects>
-                <viewController id="fKy-PR-9h8" sceneMemberID="viewController">
+                <viewController id="fKy-PR-9h8" customClass="DetailViewController" customModule="HackersBook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dxf-SA-bLl"/>
                         <viewControllerLayoutGuide type="bottom" id="TeQ-JF-oPd"/>
@@ -99,14 +90,131 @@
                     <view key="view" contentMode="scaleToFill" id="j3J-CG-FdP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Euf-ko-3ZG" customClass="ImageViewAsync" customModule="HackersBook">
+                                <rect key="frame" x="5" y="72" width="120" height="120"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Pll-8n-cGb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="ReM-B3-BCy"/>
+                                    <constraint firstAttribute="width" constant="120" id="XMS-dp-JHH"/>
+                                    <constraint firstAttribute="height" constant="120" id="jba-DG-obJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="7pf-Gr-jHQ">
+                                <rect key="frame" x="133" y="72" width="447" height="22"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author 1, Author 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="cMr-D7-sPH">
+                                <rect key="frame" x="133" y="107" width="447" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY2-xB-Kt5">
+                                <rect key="frame" x="133" y="142" width="50" height="50"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="D6B-oG-dj4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="MkM-0c-jgR"/>
+                                    <constraint firstAttribute="width" constant="50" id="fdQ-Mp-gqZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="rnq-ec-NlL"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="NoLike.png"/>
+                                <state key="highlighted" backgroundImage="Like.png"/>
+                                <connections>
+                                    <action selector="markAsFavourite:" destination="fKy-PR-9h8" eventType="touchUpInside" id="VSR-1f-egQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7pf-Gr-jHQ" firstAttribute="top" secondItem="Euf-ko-3ZG" secondAttribute="top" id="9YD-xg-YfK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7pf-Gr-jHQ" secondAttribute="trailing" id="9e5-mJ-G07"/>
+                            <constraint firstItem="7pf-Gr-jHQ" firstAttribute="leading" secondItem="Euf-ko-3ZG" secondAttribute="trailing" constant="8" id="A0i-yE-Afc"/>
+                            <constraint firstItem="kY2-xB-Kt5" firstAttribute="top" secondItem="cMr-D7-sPH" secondAttribute="bottom" constant="14.5" id="KzN-cd-njH"/>
+                            <constraint firstItem="kY2-xB-Kt5" firstAttribute="top" secondItem="cMr-D7-sPH" secondAttribute="bottom" constant="34" id="Xbo-0b-pkT"/>
+                            <constraint firstItem="cMr-D7-sPH" firstAttribute="top" secondItem="7pf-Gr-jHQ" secondAttribute="bottom" constant="13" id="anS-Sw-YI1"/>
+                            <constraint firstItem="kY2-xB-Kt5" firstAttribute="leading" secondItem="Euf-ko-3ZG" secondAttribute="trailing" constant="8" id="bWj-Ak-rXC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cMr-D7-sPH" secondAttribute="trailing" id="dAl-RD-yiU"/>
+                            <constraint firstItem="cMr-D7-sPH" firstAttribute="leading" secondItem="Euf-ko-3ZG" secondAttribute="trailing" constant="8" id="lbO-79-e3d"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Euf-ko-3ZG" secondAttribute="leading" constant="15" id="yYu-6I-UFk"/>
+                            <constraint firstItem="Euf-ko-3ZG" firstAttribute="top" secondItem="dxf-SA-bLl" secondAttribute="bottom" constant="8" id="ygH-Pb-3Xi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Xbo-0b-pkT"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Book Details" id="AIO-uw-VO7"/>
+                    <navigationItem key="navigationItem" title="Book Details" id="AIO-uw-VO7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="0cz-q5-FzM">
+                            <connections>
+                                <segue destination="iKU-LE-IQP" kind="show" identifier="showPDF" id="0Pg-ci-sNn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonRead" destination="0cz-q5-FzM" id="xAP-Fh-PYJ"/>
+                        <outlet property="imageBook" destination="Euf-ko-3ZG" id="x8O-4j-9FE"/>
+                        <outlet property="labelAuthors" destination="cMr-D7-sPH" id="piq-UK-7tB"/>
+                        <outlet property="labelTitle" destination="7pf-Gr-jHQ" id="Iv0-hP-bfd"/>
+                        <outlet property="likeButton" destination="kY2-xB-Kt5" id="zV7-MC-gAJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZd-yw-X7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5150" y="810"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="csU-TX-r82">
+            <objects>
+                <viewController id="iKU-LE-IQP" customClass="WebViewController" customModule="HackersBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nSS-If-aqH"/>
+                        <viewControllerLayoutGuide type="bottom" id="UcO-Ua-Vmd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VNS-wF-XFm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ6-us-Y8F">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="H3i-vQ-5Nf">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Pbk-vM-MuO"/>
+                                    <constraint firstAttribute="height" constant="20" id="kIY-wC-Obo"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uJ6-us-Y8F" firstAttribute="top" secondItem="nSS-If-aqH" secondAttribute="bottom" id="Kiq-AY-ZiO"/>
+                            <constraint firstItem="UcO-Ua-Vmd" firstAttribute="top" secondItem="uJ6-us-Y8F" secondAttribute="bottom" id="hqR-dg-ESL"/>
+                            <constraint firstItem="H3i-vQ-5Nf" firstAttribute="centerX" secondItem="VNS-wF-XFm" secondAttribute="centerX" id="ivE-zP-gBf"/>
+                            <constraint firstAttribute="trailing" secondItem="uJ6-us-Y8F" secondAttribute="trailing" id="qLe-bl-AFf"/>
+                            <constraint firstItem="H3i-vQ-5Nf" firstAttribute="centerY" secondItem="VNS-wF-XFm" secondAttribute="centerY" id="tFI-8I-gCX"/>
+                            <constraint firstItem="uJ6-us-Y8F" firstAttribute="leading" secondItem="VNS-wF-XFm" secondAttribute="leading" id="u7h-8i-uXj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="H3i-vQ-5Nf" id="uHx-ra-MBE"/>
+                        <outlet property="webView" destination="uJ6-us-Y8F" id="tG0-EK-90a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmC-rq-3zW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4421" y="810"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nbO-mO-La5">
@@ -160,7 +268,11 @@
             <point key="canvasLocation" x="-5993" y="810"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Like.png" width="50" height="50"/>
+        <image name="NoLike.png" width="50" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ka0-qb-E2E"/>
+        <segue reference="Qey-kT-ip9"/>
     </inferredMetricsTieBreakers>
 </document>

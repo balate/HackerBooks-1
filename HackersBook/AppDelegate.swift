@@ -9,13 +9,16 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-            
+        let splitViewController = self.window!.rootViewController as! UISplitViewController
+        splitViewController.delegate = self
+        
+        
         return true
     }
 
@@ -40,6 +43,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+        
+        guard let secondaryAsNavController = secondaryViewController as? UINavigationController else {
+            return false
+        }
+        guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController
+        else {
+            return false
+        }
+        if topAsDetailController.detailItem == nil {
+            // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
+            return true
+        }
+        return false
+        
+    }
+    
+    
+    
+    func splitViewController(svc: UISplitViewController, willHideViewController aViewController: UIViewController,
+        withBarButtonItem barButtonItem: UIBarButtonItem, forPopoverController pc: UIPopoverController) {
+        
+        if let detailViewController = svc.viewControllers[1] as? UINavigationController {
+            let dvc =  detailViewController.topViewController as? DetailViewController
+            barButtonItem.title = "Libros"
+            dvc?.navigationItem.leftBarButtonItem = barButtonItem
+        }
+        
+    }
+    
+    
+    func splitViewController(svc: UISplitViewController, willShowViewController aViewController: UIViewController, invalidatingBarButtonItem barButtonItem: UIBarButtonItem) {
+        
+        if let detailViewController = svc.viewControllers[1] as? UINavigationController {
+            let dvc =  detailViewController.topViewController as? DetailViewController
+            
+            if (barButtonItem == dvc?.navigationItem.leftBarButtonItem) {
+                 dvc?.navigationItem.leftBarButtonItem = nil
+            }
+        }
+    }
+    
 
 
 }

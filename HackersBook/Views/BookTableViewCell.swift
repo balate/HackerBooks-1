@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AGTBookTableViewCell: UITableViewCell {
+class BookTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var imageBook: UIImageView!
+    @IBOutlet weak var imageBook: ImageViewAsync!
     @IBOutlet weak var labelAuthors: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
     
@@ -27,5 +27,9 @@ class AGTBookTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    
+    
+    
+    
 }
